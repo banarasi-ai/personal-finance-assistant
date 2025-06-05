@@ -4,7 +4,7 @@ Technology is chaging at a very rapid pace. With the recent trend on Generative 
 
 # Personal Finance Assistant Vision
 ------------------
-To track day to day financial expenses and product prices using simple and easy to use interfaces with capabilities to interact using Text, Speach, Image and Video.
+To track day to day financial expenses and product prices using simple and easy to use interfaces with capabilities to interact using Text, Speech, Image and Video.
 
 
 # What is built so far (May 20205)
