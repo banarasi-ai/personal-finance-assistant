@@ -1,0 +1,9 @@
+pydantic
+python-dotenv
+pandas
+python-multipart
+uvicorn
+fastapi
+fastapi-mcp
+gradio
+gradio[mcp]

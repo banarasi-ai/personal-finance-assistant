@@ -1,0 +1,43 @@
+# syntax = docker/dockerfile:1.4
+
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.11-slim AS builder
+
+WORKDIR /workspace
+
+COPY requirements-data-store-service.txt ./
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip install uv
+
+RUN --mount=type=cache,target=/root/.cache/pip \
+    uv pip install --system -r requirements-data-store-service.txt
+
+COPY ./app/*.py /workspace/app/
+
+COPY ./data_model/*.py /workspace/data_model/
+
+COPY ./main.py /workspace/
+COPY ./__init__.py /workspace/
+
+WORKDIR /
+
+FROM builder as dev-envs
+
+RUN <<EOF
+apt-get update
+apt-get install -y --no-install-recommends git
+EOF
+
+RUN <<EOF
+useradd -s /bin/bash -m vscode
+groupadd docker
+usermod -aG docker vscode
+EOF
+# install Docker tools (cli, buildx, compose)
+COPY --from=gloursdocker/docker / /
+
+# Define the entry point to start the server
+#ENTRYPOINT ["uvicorn", "main:app", "--reload"]
+CMD echo "current path is $(pwd)" && ls -trl / && ls -ltr /workspace/app && \
+    ls -trl /workspace/data_model/ && echo "python is $(which python)" && \
+    echo "initial command runs completed, now starting service" && \
+    cd /workspace/ && uvicorn main:app --reload --host 0.0.0 --port 8000 --workers 1

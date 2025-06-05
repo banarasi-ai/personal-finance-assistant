@@ -33,7 +33,7 @@ To track day to day financial expenses and product prices using simple and easy 
 
 Using browser head over to Gradio Interface at http://localhost:7860 for usage.
 
-Using browser head over to http://localhost:3000 for various API endpoints.
+Using browser head over to http://localhost:8000/docs for various API endpoints.
 
 ## Architecture 
 ----------------

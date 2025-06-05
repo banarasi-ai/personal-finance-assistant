@@ -1,0 +1,16 @@
+pydantic
+python-dotenv
+langchain
+langchain-openai
+langchain-groq
+langchain-core
+langchain-community
+defusedxml 
+langgraph
+langchain-ollama
+pandas
+python-multipart
+fastapi
+fastapi-mcp
+gradio
+gradio[mcp]
