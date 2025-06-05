@@ -1,0 +1,41 @@
+# services:
+#   data-store-service:
+#     build:
+#       context: .
+#       target: builder
+#     container_name: fastapi-application
+#     environment:
+#       PORT: 8000
+#     ports:
+#       - '8000:8000'
+#     restart: "no"
+
+services:
+  data-store-service:
+    build: 
+      context: ./src # Use an image built from the specified dockerfile in the current directory
+      dockerfile: dockerfile.data-store-service
+    container_name: fastapi-application
+    environment:
+      PORT: 8000
+    ports:
+      - '8000:8000'
+    networks:
+      - personal-finance-assistant-network
+    restart: "no"
+
+  agentic-service:
+    build: 
+      context: ./src # Use an image built from the specified dockerfile in the current directory
+      dockerfile: dockerfile.nim-service
+    container_name: langchain-agent
+    environment:
+      PORT: 7860
+    ports:
+      - '7860:7860'
+    networks:
+      - personal-finance-assistant-network
+    restart: "no"
+
+networks:
+  personal-finance-assistant-network:
