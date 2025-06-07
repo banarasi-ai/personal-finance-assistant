@@ -62,13 +62,5 @@ ENV PATH="/workspace/.venv/bin:$PATH"
 # Define the entry point to start the server
 #ENTRYPOINT ["aiq", "serve", "--config_file=/workspace/examples/email_phishing_analyzer/configs/config.yml", "--host", "0.0.0.0"]
 #ENTRYPOINT ["python", "/workspace/langgraph_agent.py"]
-CMD echo "current path is $(pwd)" && ls -trl / && ls -ltra /workspace && \
-    ls -trl /workspace/.venv/bin && echo "python is $(which python)" && \
-    ls -trla /workspace/agentic_service/ && \
-    echo "initial command runs completed, now starting service" && \
-    ls -tlra /workspace/agentic_service/langgraph_agent.py && \
-    echo "did you find langgraph_agent.py?" && \
-    ls -trla /workspace/agentic_service/ && \
-    echo "did you check in the folder /workspace/agentic_service/?" && \
-    cd /workspace/agentic_service/ && python langgraph_agent.py
+CMD cd /workspace/agentic_service/ && python langgraph_agent.py
     

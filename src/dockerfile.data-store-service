@@ -37,7 +37,4 @@ COPY --from=gloursdocker/docker / /
 
 # Define the entry point to start the server
 #ENTRYPOINT ["uvicorn", "main:app", "--reload"]
-CMD echo "current path is $(pwd)" && ls -trl / && ls -ltr /workspace/app && \
-    ls -trl /workspace/data_model/ && echo "python is $(which python)" && \
-    echo "initial command runs completed, now starting service" && \
-    cd /workspace/ && uvicorn main:app --reload --host 0.0.0 --port 8000 --workers 1
+CMD cd /workspace/ && uvicorn main:app --reload --host 0.0.0.0 --port 8000 --workers 1
