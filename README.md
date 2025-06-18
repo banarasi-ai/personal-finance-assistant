@@ -24,12 +24,12 @@ To track day to day financial expenses and product prices using simple and easy 
 
 ## Installing Personal Finance Assistant
 ----------------
-``` docker-compose -f dpcler-compose.yaml build```
+``` docker-compose -f docker-compose.yaml build```
 
 
 ## Using Personal Finance Assistant
 ----------------
-``` docker-compose -f dpcler-compose.yaml up -d```
+``` docker-compose -f docker-compose.yaml up -d```
 
 Using browser head over to Gradio Interface at http://localhost:7860 for usage.
 
